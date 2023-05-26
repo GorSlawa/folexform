@@ -1,0 +1,24 @@
+body.main{
+  background-color: black;
+}
+#wraper{
+  position: relative;
+  margin: 0 auto;
+  padding: 0 auto;
+}
+img{
+  margin: 0 auto;
+}
+
+.row{
+  background-color: rgb(160, 83, 95);
+}
+
+/* folex_storage */
+#folex_storage{ 
+  position: relative;
+  width: 1200px;
+  height: 630px;
+
+  background: #FFFFFF;
+}
