@@ -17,8 +17,8 @@ img{
 /* folex_storage */
 #folex_storage{ 
   position: relative;
-  width: 1200px;
-  height: 630px;
+  /* width: 1200px;
+  height: 630px; */
 
   background: #FFFFFF;
 }
