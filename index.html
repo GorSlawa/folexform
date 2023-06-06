@@ -71,7 +71,7 @@ function clearInput(){
     for (var ii=0; ii < elements.length; ii++) {
 
       elements[ii].value = "";
-      document.getElementById("storage").src="image/folex_storage_0.png";
+      document.getElementById("storage").src="image/folex_storage_v2_0.png";
       //document.querySelector("#mashin").value="0";
 
     }
@@ -210,7 +210,6 @@ function searchStorage(){
 
 
     const boxFound = boxes.find((box) => {
-        
         return box.items.some((item) => item.name === mash && item.min <= fnum && item.max >= fnum);
     })
 
