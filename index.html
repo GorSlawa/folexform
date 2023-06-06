@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -75,6 +76,55 @@ function clearInput(){
 
     }
 }
+
+class Box {
+    name = "box";
+    mashin = [];
+    img_bg_info = "";
+    constructor(name){
+        this.name = name;
+    }
+    set_range_folex(mashin_name,min,max){
+        this.mashin.push({mashin_name:{"min":min,"max":max}}); 
+    }
+    set_img_bg(img){
+        this.img_bg_info = img;
+    }
+}
+
+const link_bg = "image/folex_storage_"
+
+const box1 = new Box('box1');
+box1.set_range_folex("8",2301,2500);
+box1.set_range_folex("XL",1,520);
+box1.set_img_bg(link_bg+"1.png");
+
+const box2 = new Box('box2');
+box2.set_range_folex("8",2201,2300);
+box2.set_range_folex("8",1,520);
+box2.set_img_bg(link_bg+"2.png");
+
+
+
+
+console.log(box2.mashin);
+
+box=(box1,box2);
+
+function searchStorageArray(box){
+    let mash = document.querySelector("#mashin").value;
+    let fnum = document.getElementById("folex_num").value;
+
+
+    for(bx in box){
+        if(bx.mashin[mash]["min"] <= fnum && fnum <= bx.mashin[mash]["max"]){
+            document.getElementById("storage").src=bx.img_bg_info;            
+        }
+    }
+
+
+}
+
 
 function searchStorage(){
     let mash = document.querySelector("#mashin").value;
