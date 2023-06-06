@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -71,155 +70,239 @@ function clearInput(){
     for (var ii=0; ii < elements.length; ii++) {
 
       elements[ii].value = "";
-      document.getElementById("storage").src="image/folex_storage_v2_0.png";
+      document.getElementById("storage").src="image/folex_storage_0.png";
       //document.querySelector("#mashin").value="0";
 
     }
 }
 
-
-class BoxItem {
-    constructor(name, min, max) {
-        this.name = name;
-        this.min = min;
-        this.max = max;
-    }
-}
-
-class Box {
-    name = "box";
-    items = [];
-    img_bg_info = "";
-
-    constructor(name, image){
-        this.name = name;
-        this.image = `image/folex_storage_v2_${image}`;
-    }
-
-    set_range_folex(item){
-        if (Array.isArray(item) === false) {
-            item = [item];
-        }
-        
-        item.forEach((i) => {
-            this.items.push(i);
-        });
-    }
-    set_img_bg(img){
-        this.img_bg_info = img;
-    }
-
-    find_box(name,number){
-        console.log(name,number)
-        if (this.machin.find((item) => item.name === name && item.min <= number && item.max >= number)){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-}
-
-
-
-
-
 function searchStorage(){
-    const mash = document.querySelector("#mashin").value;
-    const fnum = document.getElementById("folex_num").value;
+    let mash = document.querySelector("#mashin").value;
+    let fnum = document.getElementById("folex_num").value;
 
-    const box1 = new Box('box1', '1.png');
-    box1.set_range_folex([
-        new BoxItem('8', 2301, 2500),
-        new BoxItem('XL', 1, 520),
-    ]);
-
-    const box2 = new Box('box2', '2.png');
-    box2.set_range_folex([
-        new BoxItem('8', 2201, 2300),
-        new BoxItem('8', 1, 520),
-    ]);
-
-    const box3 = new Box('box3', '3.png');
-    box3.set_range_folex([
-        new BoxItem('XL', 1101, 1480),
-        new BoxItem('8', 3401, 3799),
-    ]);
-
-    const box4 = new Box('box4', '4.png');
-    box4.set_range_folex([
-        new BoxItem('XL', 1481, 1980),
-        new BoxItem('106', 5601, 9999),
-    ]);
-
-    const box5 = new Box('box5', '5.png');
-    box3.set_range_folex([
-        new BoxItem('8', 3800, 4600),
-    ]);
-
-    const box6 = new Box('box6', '6.png');
-    box3.set_range_folex([
-        new BoxItem('106', 1661, 4860),
-        new BoxItem('106', 2501, 2960),
-    ]);
-
-    const box7 = new Box('box7', '7.png');
-    box3.set_range_folex([
-        new BoxItem('XL', 521, 1100),
-    ]);
-
-    /////////////////// ====
-    const box8 = new Box('box8', '8.png');
-    box3.set_range_folex([
-        new BoxItem('XL', 1981, 2301),
-        new BoxItem('8', 4601, 9999),
-    ]);
-
-    const box9 = new Box('box9', '9.png');
-    box3.set_range_folex([
-        new BoxItem('8', 1341, 1900),
-        new BoxItem('106', 4001, 4280),
-        new BoxItem('106', 4861, 5060),
-    ]);
-
-    const box10 = new Box('box10', '10.png');
-    box3.set_range_folex([
-        new BoxItem('106', 2901, 3720),
-        new BoxItem('8', 5241, 9999),
-    ]);
-
-    const box11 = new Box('box11', '11.png');
-    box3.set_range_folex([
-        new BoxItem('8', 1, 1060),
-    ]);
-
-    const box12 = new Box('box12', '12.png');
-    box3.set_range_folex([
-        new BoxItem('106', 3721, 4000),
-        new BoxItem('8', 1061, 1340),
-        new BoxItem('XL', 2301, 9999),
-    ]);
-
-    const box13 = new Box('box13', '13.png');
-    box3.set_range_folex([
-        new BoxItem('8', 1901, 2200),
-        new BoxItem('106', 4281, 4660),
-    ]);
-
-    const boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9, box10, box11, box12, box13,];
-
-
-    const boxFound = boxes.find((box) => {
-        return box.items.some((item) => item.name === mash && item.min <= fnum && item.max >= fnum);
-    })
-
+    // box1
     
-
-    if (boxFound) {
-        document.getElementById("storage").src= boxFound.image;
+    if (mash == "8"){
+        if(2301 <= fnum && fnum <= 2500) {
+            document.getElementById("storage").src="image/folex_storage_1.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
     }
+
+    if (mash == "XL"){
+        if(1 <= fnum && fnum <= 520){
+            document.getElementById("storage").src="image/folex_storage_1.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+    
+    //box2
+
+    if (mash == "8") {
+        if ((2201 <= fnum && fnum <= 2300) || (2961 <= fnum && fnum <= 3400)) {
+            document.getElementById("storage").src="image/folex_storage_2.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";   
+        }
+    } 
+
+    //box3
+
+    if (mash == "8") {
+        if (3401 <= fnum && fnum <= 3799) {
+            document.getElementById("storage").src="image/folex_storage_3.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+    if (mash == "XL") {
+        if (1101 <= fnum && fnum <= 1480){
+            document.getElementById("storage").src="image/folex_storage_3.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }        
+    }
+
+
+    //box4
+
+    if (mash == "106") {
+        if (5061 <= fnum  && fnum <= 5240) {
+            document.getElementById("storage").src="image/folex_storage_4.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+    if (mash == "XL"){
+        if (1481 <= fnum && fnum <= 1980) {
+            document.getElementById("storage").src="image/folex_storage_4.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+
+    }
+
+    //box5
+
+    if (mash == "8") {
+        if (3800 <= fnum && fnum <= 4600) {
+            document.getElementById("storage").src="image/folex_storage_5.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+            
+        }
+    }
+
+    //box6
+
+    if (mash == "106"){
+        if ((1661 <= fnum && fnum <= 4860) || (2501 <= fnum && fnum <= 2960)) {
+            document.getElementById("storage").src="image/folex_storage_6.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+            
+        }
+    }
+
+    //box7
+
+    if (mash == "XL"){
+        if (521 <= fnum && fnum <= 1100){
+            document.getElementById("storage").src="image/folex_storage_7.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+    // box8
+    
+    if (mash == "8"){
+        if (4601 <= fnum){
+            document.getElementById("storage").src="image/folex_storage_8.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";  
+        }
+    }
+
+    if (mash == "XL"){
+        if (1981 <= fnum  && fnum <= 2300){
+            document.getElementById("storage").src="image/folex_storage_8.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+    // box9  диапазон 8ки пересекается со 106
+
+    if (mash == "8") {
+        if (1341 <= fnum && fnum <= 1900){
+            document.getElementById("storage").src="image/folex_storage_9.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";  
+        }
+
+    }
+    
+    if (mash == "106") {
+        if ((4001 <= fnum && fnum <= 4280) || (4861 <= fnum && fnum <= 5060)) {
+            document.getElementById("storage").src="image/folex_storage_9.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+    // box10
+
+    if (mash == "106") {
+        if ((2901 <= fnum && fnum <= 3720) || (5241 <= fnum )) {
+            document.getElementById("storage").src="image/folex_storage_10.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+    // box11
+
+    if (mash == "8") {
+        if (1 <= fnum && fnum <= 1060) {
+            document.getElementById("storage").src="image/folex_storage_11.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";   
+        }
+    }
+
+    // box12
+
+    if (mash == "8") {
+        if (1061 <= fnum && fnum <= 1340) {
+            document.getElementById("storage").src="image/folex_storage_12.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";  
+        }
+    }
+
+    if (mash == "106") {
+        if (3721 <= fnum && fnum <= 4000) {
+            document.getElementById("storage").src="image/folex_storage_12.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+    if (mash == "XL") {
+        if (2301 <= fnum) {
+            document.getElementById("storage").src="image/folex_storage_12.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+    // box13
+    if (mash == "8") {
+        if (1901 <= fnum && fnum <= 2200) {
+            document.getElementById("storage").src="image/folex_storage_13.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";  
+        }
+    }
+
+    if (mash == "106") {
+        if (4281 <= fnum && fnum <= 4660) {
+            document.getElementById("storage").src="image/folex_storage_13.png";
+            exit;
+        } else {
+            document.getElementById("storage").src="image/folex_storage_0.png";
+        }
+    }
+
+  // 8я с 2500 до   2961  нет данных 
+
+  // 106е 4281-4660 в каком ящике?
+
 }
-
-
 </script>
 </html>
