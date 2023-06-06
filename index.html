@@ -85,10 +85,19 @@ class Box {
         this.name = name;
     }
     set_range_folex(mashin_name,min,max){
-        this.mashin.push({mashin_name:{"min":min,"max":max}}); 
+        this.mashin.push({"name":mashin_name,"min":min,"max":max}); 
     }
     set_img_bg(img){
         this.img_bg_info = img;
+    }
+
+    find_box(name,number){
+        if (this.machin.find((item) => item.name === name && item.min <= number && item.max >= number)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 
@@ -109,23 +118,27 @@ box2.set_img_bg(link_bg+"2.png");
 
 console.log(box2.mashin);
 
-box=(box1,box2);
+boxes=(box1,box2);
+console.log(boxes);
 
-function searchStorageArray(box){
+
+function searchStorage(boxes){
     let mash = document.querySelector("#mashin").value;
     let fnum = document.getElementById("folex_num").value;
 
-
-    for(bx in box){
-        if(bx.mashin[mash]["min"] <= fnum && fnum <= bx.mashin[mash]["max"]){
-            document.getElementById("storage").src=bx.img_bg_info;            
-        }
-    }
+    console.log(fnum);
+    for(bx in boxes){
+        console.log(bx);
+        if (bx.find_box(mash,fnum)){
+            document.getElementById("storage").src=bx.set_img_bg;
+            console.log(bx.set_img_bg);
+        };
+    };
 
 
 }
 
-
+/*
 function searchStorage(){
     let mash = document.querySelector("#mashin").value;
     let fnum = document.getElementById("folex_num").value;
@@ -352,7 +365,8 @@ function searchStorage(){
   // 8я с 2500 до   2961  нет данных 
 
   // 106е 4281-4660 в каком ящике?
+  
 
-}
+}*/
 </script>
 </html>
