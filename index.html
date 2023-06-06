@@ -120,32 +120,105 @@ class Box {
     }
 }
 
+const box1 = new Box('box1', '1.png');
+box1.set_range_folex([
+    new BoxItem('8', 2301, 2500),
+    new BoxItem('XL', 1, 520),
+]);
+
+const box2 = new Box('box2', '2.png');
+box2.set_range_folex([
+    new BoxItem('8', 2201, 2300),
+    new BoxItem('8', 1, 520),
+]);
+
+const box3 = new Box('box3', '3.png');
+box3.set_range_folex([
+    new BoxItem('XL', 1101, 1480),
+    new BoxItem('8', 3401, 3799),
+]);
+
+const box4 = new Box('box4', '4.png');
+box4.set_range_folex([
+    new BoxItem('XL', 1481, 1980),
+    new BoxItem('106', 5601, 9999),
+]);
+
+const box5 = new Box('box5', '5.png');
+box3.set_range_folex([
+    new BoxItem('8', 3800, 4600),
+]);
+
+const box6 = new Box('box6', '6.png');
+box3.set_range_folex([
+    new BoxItem('106', 1661, 4860),
+    new BoxItem('106', 2501, 2960),
+]);
+
+const box7 = new Box('box7', '7.png');
+box3.set_range_folex([
+    new BoxItem('XL', 521, 1100),
+]);
+
+/////////////////// ====
+const box8 = new Box('box8', '8.png');
+box3.set_range_folex([
+    new BoxItem('XL', 1981, 2301),
+    new BoxItem('8', 4601, 9999),
+]);
+
+const box9 = new Box('box9', '9.png');
+box3.set_range_folex([
+    new BoxItem('8', 1341, 1900),
+    new BoxItem('106', 4001, 4280),
+    new BoxItem('106', 4861, 5060),
+]);
+
+const box10 = new Box('box10', '10.png');
+box3.set_range_folex([
+    new BoxItem('106', 2901, 3720),
+    new BoxItem('8', 5241, 9999),
+]);
+
+const box11 = new Box('box11', '11.png');
+box3.set_range_folex([
+    new BoxItem('8', 1, 1060),
+]);
+
+const box12 = new Box('box12', '12.png');
+box3.set_range_folex([
+    new BoxItem('106', 3721, 4000),
+    new BoxItem('8', 1061, 1340),
+    new BoxItem('XL', 2301, 9999),
+]);
+
+const box13 = new Box('box13', '13.png');
+box3.set_range_folex([
+    new BoxItem('8', 1901, 2200),
+    new BoxItem('106', 4281, 4660),
+]);
+
+
+
+
+
 function searchStorage(){
     const mash = document.querySelector("#mashin").value;
     const fnum = document.getElementById("folex_num").value;
 
-    const box1 = new Box('box1', '1.png');
-
-    box1.set_range_folex([
-        new BoxItem('8', 2301, 2500),
-        new BoxItem('XL', 1, 520),
-    ]);
-
-    const box2 = new Box('box2', '2.png');
-
-    box2.set_range_folex([
-        new BoxItem('8', 2201, 2300),
-        new BoxItem('8', 1, 520),
-    ]);
+    
 
     const boxes = [box1, box2];
 
     const boxFound = boxes.find((box) => {
+        
         return box.items.some((item) => item.name === mash && item.min <= fnum && item.max >= fnum);
     })
 
+    
+
     if (boxFound) {
-        document.getElementById("storage").src= box.image;
+        document.getElementById("storage").src= boxFound.image;
     }
 }
 
