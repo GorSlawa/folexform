@@ -92,6 +92,7 @@ class Box {
     }
 
     find_box(name,number){
+        console.log(name,number)
         if (this.machin.find((item) => item.name === name && item.min <= number && item.max >= number)){
             return true;
         }
@@ -101,33 +102,37 @@ class Box {
     }
 }
 
-const link_bg = "image/folex_storage_"
-
-const box1 = new Box('box1');
-box1.set_range_folex("8",2301,2500);
-box1.set_range_folex("XL",1,520);
-box1.set_img_bg(link_bg+"1.png");
-
-const box2 = new Box('box2');
-box2.set_range_folex("8",2201,2300);
-box2.set_range_folex("8",1,520);
-box2.set_img_bg(link_bg+"2.png");
 
 
 
 
-console.log(box2.mashin);
-
-boxes=(box1,box2);
-console.log(boxes);
 
 
-function searchStorage(boxes){
+
+
+
+function searchStorage(){
     let mash = document.querySelector("#mashin").value;
     let fnum = document.getElementById("folex_num").value;
 
+    const link_bg = "image/folex_storage_"
+
+    const box1 = new Box('box1');
+    box1.set_range_folex("8",2301,2500);
+    box1.set_range_folex("XL",1,520);
+    box1.set_img_bg(link_bg+"1.png");
+
+    const box2 = new Box('box2');
+    box2.set_range_folex("8",2201,2300);
+    box2.set_range_folex("8",1,520);
+    box2.set_img_bg(link_bg+"2.png");
+    
+    boxes=(box1,box2);
+    console.log(boxes);
+
+
     console.log(fnum);
-    for(bx in boxes){
+    for(var bx in boxes){
         console.log(bx);
         if (bx.find_box(mash,fnum)){
             document.getElementById("storage").src=bx.set_img_bg;
