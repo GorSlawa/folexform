@@ -77,15 +77,33 @@ function clearInput(){
     }
 }
 
+
+class BoxItem {
+    constructor(name, min, max) {
+        this.name = name;
+        this.min = min;
+        this.max = max;
+    }
+}
+
 class Box {
     name = "box";
-    mashin = [];
+    items = [];
     img_bg_info = "";
-    constructor(name){
+
+    constructor(name, image){
         this.name = name;
+        this.image = `image/folex_storage_${image}`;
     }
-    set_range_folex(mashin_name,min,max){
-        this.mashin.push({"name":mashin_name,"min":min,"max":max}); 
+
+    set_range_folex(item){
+        if (Array.isArray(item) === false) {
+            item = [item];
+        }
+        
+        item.forEach((i) => {
+            this.items.push(i);
+        });
     }
     set_img_bg(img){
         this.img_bg_info = img;
@@ -102,45 +120,33 @@ class Box {
     }
 }
 
-
-
-
-
-
-
-
-
-
 function searchStorage(){
-    let mash = document.querySelector("#mashin").value;
-    let fnum = document.getElementById("folex_num").value;
+    const mash = document.querySelector("#mashin").value;
+    const fnum = document.getElementById("folex_num").value;
 
-    const link_bg = "image/folex_storage_"
+    const box1 = new Box('box1', '1.png');
 
-    const box1 = new Box('box1');
-    box1.set_range_folex("8",2301,2500);
-    box1.set_range_folex("XL",1,520);
-    box1.set_img_bg(link_bg+"1.png");
+    box1.set_range_folex([
+        new BoxItem('8', 2301, 2500),
+        new BoxItem('XL', 1, 520),
+    ]);
 
-    const box2 = new Box('box2');
-    box2.set_range_folex("8",2201,2300);
-    box2.set_range_folex("8",1,520);
-    box2.set_img_bg(link_bg+"2.png");
-    
-    boxes=(box1,box2);
-    console.log(boxes);
+    const box2 = new Box('box2', '2.png');
 
+    box2.set_range_folex([
+        new BoxItem('8', 2201, 2300),
+        new BoxItem('8', 1, 520),
+    ]);
 
-    console.log(fnum);
-    for(var bx in boxes){
-        console.log(bx);
-        if (bx.find_box(mash,fnum)){
-            document.getElementById("storage").src=bx.set_img_bg;
-            console.log(bx.set_img_bg);
-        };
-    };
+    const boxes = [box1, box2];
 
+    const boxFound = boxes.find((box) => {
+        return box.items.some((item) => item.name === mash && item.min <= fnum && item.max >= fnum);
+    })
 
+    if (boxFound) {
+        document.getElementById("storage").src= box.image;
+    }
 }
 
 /*
