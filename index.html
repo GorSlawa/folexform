@@ -64,16 +64,33 @@
 </body>
 <script type="text/javascript">
 
+var pathbg="image/folex_storage_v2_";
+var bg_def = "0.png";    
+
 function clearInput(){
     let elements = document.getElementsByTagName("input");
     //console.log(elements.length)
     for (var ii=0; ii < elements.length; ii++) {
 
       elements[ii].value = "";
-      document.getElementById("storage").src="image/folex_storage_0.png";
+      document.getElementById("storage").src=pathbg + bg_def;
       //document.querySelector("#mashin").value="0";
 
     }
+};
+
+
+
+function ifimg(fnum=-1, dmin=0, dmax=99999, bg_search="0.png", bg_def = "0.png", elementid="storage"){
+    console.log("ifimg===");
+
+    if(dmin <= fnum && fnum <= dmax){
+        document.getElementById(elementid).src=pathbg + bg_search;
+        exit;
+    } else {
+        document.getElementById(elementid).src=pathbg + bg_def;
+    }
+
 }
 
 function searchStorage(){
@@ -81,6 +98,115 @@ function searchStorage(){
     let fnum = document.getElementById("folex_num").value;
 
     // box1
+    if(mash === "8"){
+        ifimg(fnum, 2301, 2500, "1.png");
+    }
+    if(mash === "XL"){
+        ifimg(fnum, 1, 520, "1.png");
+    }
+
+    // box2
+    if(mash === "8"){
+        ifimg(fnum, 2201, 2300, "2.png");
+    }
+    if(mash === "8"){
+        ifimg(fnum, 2961, 3400, "2.png");
+    }
+
+    // box3
+    if(mash === "8"){
+        ifimg(fnum, 3401, 3799, "3.png");
+    }
+    if(mash === "XL"){
+        ifimg(fnum, 1101, 1480, "3.png");
+    }
+    // box4
+    if(mash === "106"){
+        ifimg(fnum, 5061, 5240, "4.png");
+    }
+    if(mash === "XL"){
+        ifimg(fnum, 1481, 1980, "4.png");
+    }
+    // box5
+    if(mash === "8"){
+        ifimg(fnum, 3800, 4600, "5.png");
+    }
+    // if(mash === "XL"){
+    //     ifimg(fnum, 1, 520, "1.png");
+    // }
+
+    // box6
+    // if(mash === "8"){
+    //     ifimg(fnum, 2301, 2500, "1.png");
+    // }
+    if(mash === "XL"){
+        ifimg(fnum, 521, 1100, "6.png");
+    }
+
+    // box7
+    if(mash === "8"){
+        ifimg(fnum, 2501, 2960, "7.png");
+    }
+    if(mash === "106"){
+        ifimg(fnum, 1661, 4860, "7.png");
+    }
+
+    // box8
+    if(mash === "8"){
+        ifimg(fnum, 4601, 5040, "8.png");
+    }
+    if(mash === "XL"){
+        ifimg(fnum, 1981, 2300, "8.png");
+    }
+
+    // box9
+    if(mash === "8"){
+        ifimg(fnum, 1341, 1900, "9.png");
+    }
+    if(mash === "106"){
+        ifimg(fnum, 4001, 4280, "9.png");
+    }
+    if(mash === "106"){
+        ifimg(fnum, 4861, 5060, "9.png");
+    }
+    
+    // box10
+    if(mash === "106"){
+        ifimg(fnum, 3100, 3700, "10.png");
+    }
+    if(mash === "106"){
+        ifimg(fnum, 5241, 9999, "10.png");
+    }
+
+    // box11
+    if(mash === "8"){
+        ifimg(fnum, 200, 1060, "11.png");
+    }
+    if(mash === "8"){
+        ifimg(fnum, 5241, 5240, "11.png");
+    }
+
+    // box12
+    if(mash === "106"){
+        ifimg(fnum, 3721, 4000, "12.png");
+    }
+    if(mash === "8"){
+        ifimg(fnum, 1061, 1340, "12.png");
+    }
+    if(mash === "XL"){
+        ifimg(fnum, 2301, 9999, "12.png");
+    }
+    
+    // box13
+    if(mash === "8"){
+        ifimg(fnum, 1901, 2200, "13.png");
+    }
+    if(mash === "106"){
+        ifimg(fnum, 4281, 4660, "13.png");
+    }
+    
+
+ /*   // box1
     
     if (mash == "8"){
         if(2301 <= fnum && fnum <= 2500) {
@@ -302,6 +428,7 @@ function searchStorage(){
   // 8я с 2500 до   2961  нет данных 
 
   // 106е 4281-4660 в каком ящике?
+  */
 
 }
 </script>
